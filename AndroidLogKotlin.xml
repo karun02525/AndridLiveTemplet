@@ -1,0 +1,199 @@
+<templateSet group="AndroidLogKotlin">
+  <template name="d" value="android.util.Log.d(TAG, &quot;$KOTLIN_FUNCTION_NAME$: $content$&quot;)" description="Log.d(TAG, String)" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="lt" value="android.util.Log.d(TAG, Thread.currentThread().name + &quot; ### &quot;&#10;        + &quot;$KOTLIN_FUNCTION_NAME$: $content$&quot;)" description="Log.d(TAG, Thread + String)" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="loge" value="android.util.Log.e(TAG, &quot;$KOTLIN_FUNCTION_NAME$: $content$&quot;, $exception$)" description="Log.e(TAG, String, Exception)" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="exception" expression="" defaultValue="e" alwaysStopAt="false" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="loget" value="android.util.Log.e(TAG, Thread.currentThread().name + &quot; ### &quot;&#10;        + &quot;$KOTLIN_FUNCTION_NAME$: $content$&quot;, $exception$)" description="Log.e(TAG, Thread + String, Exception)" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="exception" expression="" defaultValue="e" alwaysStopAt="false" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="logi" value="android.util.Log.i(TAG, &quot;$KOTLIN_FUNCTION_NAME$: $content$&quot;)" description="Log.i(TAG, String)" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="logit" value="android.util.Log.i(TAG, Thread.currentThread().name + &quot; ### &quot;&#10;        + &quot;$KOTLIN_FUNCTION_NAME$: $content$&quot;)" description="Log.i(TAG, Thread + String)" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="logm" value="android.util.Log.d(TAG, $content$)" description="Log method name and its arguments" toReformat="true" toShortenFQNames="true">
+    <variable name="content" expression="groovyScript(&quot;def params = _2.collect {it + ' = [$' + it + ']'}.join(', '); return '\&quot;' + _1 + '() called' + (params.empty  ? '' : ' with: ' + params) + '\&quot;'&quot;, kotlinFunctionName(), functionParameters())" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="logmt" value="android.util.Log.d(TAG, Thread.currentThread().name + &quot; ### &quot;&#10;        + $content$)" description="Log thread, method name and its arguments" toReformat="true" toShortenFQNames="true">
+    <variable name="content" expression="groovyScript(&quot;def params = _2.collect {it + ' = [$' + it + ']'}.join(', '); return '\&quot;' + _1 + '() called' + (params.empty  ? '' : ' with: ' + params) + '\&quot;'&quot;, kotlinFunctionName(), functionParameters())" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="logr" value="android.util.Log.d(TAG, &quot;$KOTLIN_FUNCTION_NAME$() returned: $$$result$&quot;)" description="Log result of this method" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="result" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="logrt" value="android.util.Log.d(TAG, Thread.currentThread().name + &quot; ### &quot;&#10;        + &quot;$KOTLIN_FUNCTION_NAME$() returned: &quot; +  $result$)" description="Log thread and result of this method" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="result" expression="variableOfType(methodReturnType())" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="logt" value="companion object {&#10;    private const val TAG = &quot;$kotlinClassName$&quot;&#10;}" description="A companion object containing a logtag with your current classname" toReformat="true" toShortenFQNames="true">
+    <variable name="kotlinClassName" expression="groovyScript(&quot;_1.take(Math.min(23, _1.length()));&quot;, kotlinClassName())" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="ttt" value="android.widget.Toast.makeText($kotlinClassName$@this, &quot;$content$&quot;, Toast.LENGTH_SHORT).show()" description="" toReformat="true" toShortenFQNames="true">
+    <variable name="kotlinClassName" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="logw" value="android.util.Log.w(TAG, &quot;$KOTLIN_FUNCTION_NAME$: $content$&quot;, $exception$)" description="Log.w(TAG, String, Exception)" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="exception" expression="" defaultValue="e" alwaysStopAt="false" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="logwt" value="android.util.Log.w(TAG, Thread.currentThread().name + &quot; ### &quot;&#10;        + &quot;$KOTLIN_FUNCTION_NAME$: $content$&quot;, $exception$)" description="Log.w(TAG, Thread + String, Exception)" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="exception" expression="" defaultValue="e" alwaysStopAt="false" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="wtf" value="android.util.Log.wtf(TAG, &quot;$KOTLIN_FUNCTION_NAME$: $content$&quot;, $exception$)" description="Log.wtf(TAG, String, Exception)" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="exception" expression="" defaultValue="e" alwaysStopAt="false" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="wtft" value="android.util.Log.wtf(TAG, Thread.currentThread().name + &quot; ### &quot;&#10;        + &quot;$KOTLIN_FUNCTION_NAME$: $content$&quot;, $exception$)" description="Log.wtf(TAG, Thread + String, Exception)" toReformat="true" toShortenFQNames="true">
+    <variable name="KOTLIN_FUNCTION_NAME" expression="kotlinFunctionName()" defaultValue="" alwaysStopAt="false" />
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="exception" expression="" defaultValue="e" alwaysStopAt="false" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="mcontext" value="private lateinit var mContext:Context&#10;" description="Contect overide" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="tt" value="android.widget.Toast.makeText(this, &quot;$content$&quot;, Toast.LENGTH_SHORT).show();" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="content" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN" value="true" />
+      <option name="KOTLIN_COMMENT" value="false" />
+      <option name="KOTLIN_OBJECT_DECLARATION" value="false" />
+      <option name="KOTLIN_TOPLEVEL" value="false" />
+    </context>
+  </template>
+  <template name="tag" value=" private val TAG = this::class.java.simpleName" description="" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_CLASS" value="true" />
+    </context>
+  </template>
+  <template name="dialog" value="AlertDialog.Builder(this)&#10;.setTitle(&quot;&quot;)&#10;.setMessage(&quot;&quot;)&#10;.setCancelable(false)&#10;.setPositiveButton(&quot;Yes&quot;) { _, i -&gt;&#10;    Toast.makeText(this, &quot;Yes&quot;, Toast.LENGTH_SHORT).show();&#10;}&#10;.setNegativeButton(&quot;No&quot;) {_,i -&gt;&#10;    Toast.makeText(this, &quot;NO&quot;, Toast.LENGTH_SHORT).show();&#10;}&#10;.create()&#10;.show()" description="Dialog Open" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="vv" value="$RETURN$.visibility = View.VISIBLE" shortcut="TAB" description="Visible view" toReformat="false" toShortenFQNames="true">
+    <variable name="RETURN" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="seekbar" value="seekbar.progress = 0;&#10;        seekbar.incrementProgressBy(100);&#10;        seekbar.max = 1500;&#10;        seekbar.min = 500;&#10;        seekbar.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{&#10;&#10;            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {&#10;                Toast.makeText(applicationContext, &quot;$progress&quot;, Toast.LENGTH_SHORT).show();&#10;            }&#10;&#10;            override fun onStartTrackingTouch(seekBar: SeekBar?) {&#10;                //Toast.makeText(applicationContext, &quot;Seekbar touch started&quot;, Toast.LENGTH_SHORT).show();&#10;            }&#10;&#10;            override fun onStopTrackingTouch(seekBar: SeekBar?) {&#10;                //Toast.makeText(applicationContext, &quot;Seekbar touch stopped&quot;, Toast.LENGTH_SHORT).show();&#10;            }&#10;&#10;        })" description="seekbar" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="download" value="  val downloadManager:DownloadManager= getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager&#10;        val request=DownloadManager.Request(Uri.parse(&quot;https://www.tutorialspoint.com/kotlin/kotlin_tutorial.pdf&quot;))&#10;            .setTitle(&quot;Download...&quot;)&#10;            .setDescription(&quot;this is pdf file download&quot;)&#10;            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)&#10;            .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,&quot;kotlin.pdf&quot;)&#10;        downloadManager.enqueue(request)&#10;" description="download manager" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="inflater" value="  val v=layoutInflater.inflate(R.layout.custome_layout,parent_linner_layout)&#10;        v.tv_view.text=&quot;this is view&quot;" description="Inflater in run time add view" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="email" value="val email= Patterns.EMAIL_ADDRESS.matcher(edt_emailId).matches()&#10;" description="Email validation" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="password" value="val passwordCaseSecretive=Pattern.compile(&quot;(?=.*[A-Z)&quot;+&quot;.{0,}&quot;)" description="Password CaseSecretive" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="bottomdialog" value="    val view = layoutInflater.inflate(R.layout.layout_bottom_sheet, null)&#10;        val radio1 = view.radio_1&#10;        val radio2 = view.radio_2&#10;        val tvCancel = view.tv_cancel&#10;&#10;&#10;        val mBottomSheetDialog = Dialog(this, R.style.MaterialDialogSheet)&#10;        mBottomSheetDialog.setContentView(view)&#10;        mBottomSheetDialog.setCancelable(true)&#10;        mBottomSheetDialog.window!!.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)&#10;        mBottomSheetDialog.window!!.setGravity(Gravity.BOTTOM)&#10;        mBottomSheetDialog.show()&#10;&#10;        tvCancel.setOnClickListener { mBottomSheetDialog.hide()}&#10;&#10;        view.radio_group_category.setOnCheckedChangeListener { _, checkedId -&gt;&#10;            when (checkedId) {&#10;                R.id.radio_1 -&gt; {&#10;                    selectedCategoryId = 1&#10;                }&#10;                R.id.radio_2 -&gt; {&#10;                    selectedCategoryId = 2&#10;&#10;                }&#10;            }&#10;            }&#10;&#10;        radio1.setOnClickListener {&#10;            mBottomSheetDialog.dismiss()&#10;        }&#10;        radio2.setOnClickListener {&#10;            mBottomSheetDialog.dismiss()&#10;        }&#10;        when (selectedCategoryId) {&#10;            1 -&gt; {&#10;                radio1.isChecked = true&#10;                radio2.isChecked = false&#10;            }&#10;            2 -&gt; {&#10;                radio1.isChecked = false&#10;                radio2.isChecked = true&#10;            }&#10;            else -&gt; {&#10;                radio1.isChecked = false&#10;                radio2.isChecked = false&#10;                selectedCategoryId = 0&#10;            }&#10;&#10;        }&#10;&#10;&#10;&#10;        /*companion object{&#10;                 var selectedCategoryId=0&#10;             }&#10;     &#10;     &#10;             &lt;style name=&quot;MaterialDialogSheet&quot; parent=&quot;@android:style/Theme.Dialog&quot;&gt;&#10;             &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;true&lt;/item&gt;&#10;             &lt;item name=&quot;android:windowBackground&quot;&gt;@android:color/transparent&lt;/item&gt;&#10;             &lt;item name=&quot;android:windowContentOverlay&quot;&gt;@null&lt;/item&gt;&#10;             &lt;item name=&quot;android:windowNoTitle&quot;&gt;true&lt;/item&gt;&#10;             &lt;item name=&quot;android:backgroundDimEnabled&quot;&gt;true&lt;/item&gt;&#10;             &lt;item name=&quot;android:windowIsFloating&quot;&gt;false&lt;/item&gt;&#10;             &lt;item name=&quot;android:windowAnimationStyle&quot;&gt;@style/MaterialDialogSheetAnimation&lt;/item&gt;&#10;             &lt;/style&gt;&#10;     &#10;             &lt;style name=&quot;MaterialDialogSheetAnimation&quot;&gt;&#10;             &lt;item name=&quot;android:windowEnterAnimation&quot;&gt;@anim/popup_show&lt;/item&gt;&#10;             &lt;item name=&quot;android:windowExitAnimation&quot;&gt;@anim/popup_hide&lt;/item&gt;&#10;             &lt;/style&gt;&#10;     &#10;              res-&gt;anim -&gt;popup_hide.xml&#10;     &#10;              &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;              &lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;&#10;                 &lt;translate&#10;                     android:fromYDelta=&quot;0&quot;&#10;                     android:toYDelta=&quot;100%p&quot;&#10;                     android:duration=&quot;300&quot;&#10;                     android:interpolator=&quot;@android:anim/accelerate_decelerate_interpolator&quot;/&gt;&#10;              &lt;/set&gt;&#10;     &#10;              res-&gt;anim -&gt;popup_show.xml&#10;     &#10;             &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;             &lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;&#10;                 &lt;translate&#10;                     android:fromYDelta=&quot;100%p&quot;&#10;                     android:toYDelta=&quot;0&quot;&#10;                     android:duration=&quot;300&quot;&#10;                     android:interpolator=&quot;@android:anim/accelerate_decelerate_interpolator&quot;/&gt;&#10;             &lt;/set&gt;&#10;     &#10;             &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#10;     &lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#10;         android:id=&quot;@+id/popup_window&quot;&#10;         android:layout_width=&quot;match_parent&quot;&#10;         android:layout_height=&quot;wrap_content&quot;&#10;         android:layout_gravity=&quot;bottom|center&quot;&#10;         android:background=&quot;@android:color/white&quot;&#10;         android:orientation=&quot;vertical&quot;&gt;&#10;     &#10;     &#10;         &lt;RelativeLayout&#10;             android:layout_width=&quot;match_parent&quot;&#10;             android:layout_height=&quot;wrap_content&quot;&#10;             android:padding=&quot;10dp&quot;&gt;&#10;     &#10;             &lt;TextView&#10;                 android:layout_width=&quot;wrap_content&quot;&#10;                 android:layout_height=&quot;wrap_content&quot;&#10;                 android:layout_centerVertical=&quot;true&quot;&#10;                 android:layout_marginStart=&quot;10dp&quot;&#10;                 android:text=&quot;Gender&quot;&#10;                 android:textStyle=&quot;normal&quot; /&gt;&#10;     &#10;     &#10;             &lt;TextView&#10;                 android:id=&quot;@+id/tv_cancel&quot;&#10;                 android:layout_width=&quot;wrap_content&quot;&#10;                 android:layout_height=&quot;wrap_content&quot;&#10;                 android:layout_alignParentEnd=&quot;true&quot;&#10;                 android:layout_centerVertical=&quot;true&quot;&#10;                 android:layout_marginStart=&quot;10dp&quot;&#10;                 android:layout_marginEnd=&quot;10dp&quot;&#10;                 android:text=&quot;Cancel&quot; /&gt;&#10;     &#10;     &#10;         &lt;/RelativeLayout&gt;&#10;     &#10;         &lt;View&#10;             android:layout_width=&quot;match_parent&quot;&#10;             android:layout_height=&quot;0.9dp&quot;&#10;             android:background=&quot;#dedede&quot; /&gt;&#10;     &#10;         &lt;RadioGroup&#10;             android:id=&quot;@+id/radio_group_category&quot;&#10;             android:layout_width=&quot;match_parent&quot;&#10;             android:layout_height=&quot;wrap_content&quot;&#10;             android:layout_marginTop=&quot;10dp&quot;&#10;             android:orientation=&quot;vertical&quot;&gt;&#10;     &#10;     &#10;             &lt;RadioButton&#10;                 android:id=&quot;@+id/radio_1&quot;&#10;                 android:layout_width=&quot;match_parent&quot;&#10;                 android:layout_height=&quot;wrap_content&quot;&#10;                 android:layout_gravity=&quot;start&quot;&#10;                 android:layoutDirection=&quot;rtl&quot;&#10;                 android:scaleX=&quot;0.9&quot;&#10;                 android:scaleY=&quot;0.9&quot;&#10;                 android:text=&quot;Male&quot;&#10;                 android:checked=&quot;true&quot;&#10;                 android:textAlignment=&quot;textStart&quot;&#10;                 android:textSize=&quot;14sp&quot; /&gt;&#10;     &#10;             &lt;RadioButton&#10;                 android:id=&quot;@+id/radio_2&quot;&#10;                 android:layout_width=&quot;match_parent&quot;&#10;                 android:layout_height=&quot;wrap_content&quot;&#10;                 android:layout_gravity=&quot;start&quot;&#10;                 android:layoutDirection=&quot;rtl&quot;&#10;                 android:scaleX=&quot;0.9&quot;&#10;                 android:scaleY=&quot;0.9&quot;&#10;                 android:text=&quot;Female&quot;&#10;                 android:textAlignment=&quot;textStart&quot;&#10;                 android:textSize=&quot;14sp&quot; /&gt;&#10;     &#10;         &lt;/RadioGroup&gt;&#10;     &#10;     &lt;/LinearLayout&gt;&#10;     &#10;             */" description="Bottom Dialog" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="tutorial" value="//https://www.kotlinvsjava.com/index.html" description="Tutorial in Kotlin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN" value="true" />
+    </context>
+  </template>
+  <template name="pushNotification" value="/* https://fcm.googleapis.com/fcm/send&#10;    Authorization =&gt; key=Server&#10;&#10;    {&#10;        &quot;to&quot;: &quot;e4ZjASTPwHY:APA91bEndmfB0llw1Ts_Cu2UB0tcc9NfW44_OMccpk3tbm8gdkdk2bVCr9Ci_C-CBvepP6GvmKIefMJYq5qDLzIIwxyrEU2wosUiOgkHNwIMxT1LfCW9O5tPly4UhSKxeasKeUFoR4kD&quot;,&#10;        &quot;notification&quot;: {&#10;        &quot;title&quot;: &quot;this is title&quot;,&#10;        &quot;message&quot;: &quot;New announcement assigned&quot;&#10;    },&#10;        &quot;data&quot;: {&#10;        &quot;title&quot;: &quot;this is title&quot;,&#10;        &quot;message&quot;: &quot;New announcement assigned&quot;,&#10;        &quot;priority&quot;: &quot;high&quot;,&#10;        &quot;content_available&quot;: true,&#10;        &quot;type&quot;: &quot;url&quot;,&#10;        &quot;segment&quot;: &quot;link_redirect&quot;,&#10;        &quot;cta_text&quot;:&quot;deposits&quot;,&#10;        &quot;payload&quot;:{&quot;url&quot;:&quot;https://winds-notification-assets.s3.ap-south-1.amazonaws.com/chrismas/Customer.mp4&quot;, &quot;isImage&quot; : &quot;2&quot;},&#10;        &quot;server_time&quot;:&quot;2019-11-26 11:35:05&quot;&#10;    }&#10;    }*/" description="Push Notification in firebase" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN" value="true" />
+    </context>
+  </template>
+  <template name="firebaseAnalytics" value="private lateinit var firebaseAnalytics: FirebaseAnalytics&#10;        firebaseAnalytics= FirebaseAnalytics.getInstance(this)&#10;       &#10;        val params = Bundle()&#10;        params.putString(&quot;captain_id&quot;, sp.userId)&#10;        params.putString(&quot;captain_name&quot;, sp.userName)&#10;        firebaseAnalytics.logEvent(&quot;Android_Captain_Login&quot;, params)&#10;        firebaseAnalytics.setUserProperty(&quot;captain_id&quot;,sp.userId)&#10;        firebaseAnalytics.setUserProperty(&quot;captain_name&quot;,sp.userName)" description="" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="textwatcher" value="/* edit_amount.afterTextChanged {&#10;         Log.d(&quot;TAGS&quot;, &quot;Amount : $it&quot;)&#10;        }&#10;        */&#10;&#10;fun EditText.afterTextChanged(afterTextChanged: (Int) -&gt; Unit) {&#10;        this.addTextChangedListener(object : TextWatcher {&#10;            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {&#10;            }&#10;&#10;            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {&#10;            }&#10;&#10;            override fun afterTextChanged(editable: Editable?) {&#10;               // afterTextChanged.invoke(editable.toString())&#10;                try {&#10;                    afterTextChanged.invoke(editable.toString().toInt())&#10;                } catch (e: Exception) {&#10;                    afterTextChanged.invoke(0)&#10;                    e.printStackTrace()&#10;                }&#10;            }&#10;        })&#10;    }&#10;    &#10;    " description="Edit Text and watcher" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="KOTLIN" value="true" />
+    </context>
+  </template>
+</templateSet>
